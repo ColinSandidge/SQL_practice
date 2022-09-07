@@ -11,6 +11,14 @@ SELECT DISTINCT(wg.country_id)
 FROM summer_games AS sg LEFT JOIN countries AS c ON sg.country_id = c.id
 						INNER JOIN winter_games AS wg ON sg.country_id = wg.country_id;
 						
+SELECT DISTINCT(c.country)
+FROM countries AS c LEFT JOIN summer_games AS sg ON c.id = sg.country_id
+					INNER JOIN winter_games AS wg ON sg.country_id = wg.country_id;
+					
+SELECT DISTINCT(sg.country_id)
+FROM summer_games AS sg INNER JOIN winter_games AS wg ON sg.country_id = wg.country_id;
+
+-- all queries return 78 rows
 
 
 /*1b) Create a table that lists all country IDs for countries that competed in 
@@ -23,6 +31,8 @@ that competed in either games
 SELECT DISTINCT(c.id)
 FROM countries AS c LEFT JOIN summer_games AS sg ON c.id = sg.country_id
 					LEFT JOIN winter_games AS wg ON c.id = wg.country_id;
+	
+--203 rows returned	
 	
 	
 	
