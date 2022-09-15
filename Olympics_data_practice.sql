@@ -7,18 +7,10 @@ countries that appear in both lists
 select distinct country id's
 */
 
+
 SELECT DISTINCT(wg.country_id)
-FROM summer_games AS sg LEFT JOIN countries AS c ON sg.country_id = c.id
-						INNER JOIN winter_games AS wg ON sg.country_id = wg.country_id;
-						
-SELECT DISTINCT(c.country)
-FROM countries AS c LEFT JOIN summer_games AS sg ON c.id = sg.country_id
-					INNER JOIN winter_games AS wg ON sg.country_id = wg.country_id;
-					
-SELECT DISTINCT(sg.country_id)
 FROM summer_games AS sg INNER JOIN winter_games AS wg ON sg.country_id = wg.country_id;
 
--- all queries return 78 rows
 
 
 /*1b) Create a table that lists all country IDs for countries that competed in 
@@ -38,9 +30,10 @@ FROM countries AS c LEFT JOIN summer_games AS sg ON c.id = sg.country_id
 	
 /* 2a) For each country give the average height and average weight of their athletes.
 
-okay so as to not leave out any athletes we will need to again join summer and winter games
-table to countries and then we will need to pull in the athletes table. Would like to return
-country name then the aggregate functions the question is asking of us. Lets go!
+okay so as to not leave out any athletes we will need to again join summer and winter 
+games table to countries and then we will need to pull in the athletes table. Would 
+like to return country name then the aggregate functions the question is asking of us.
+Lets go!
 */
 
 SELECT DISTINCT(c.country),
@@ -53,8 +46,8 @@ GROUP BY c.country;
 
 
 
-/* 2b) For each country give the average height and average weight of their male athletes 
-who won a gold medal.
+/* 2b) For each country give the average height and average weight of their male 
+athletes who won a gold medal.
 
 going to do this for both the summer and winter games seperately then see if the answer 
 is the same as if i had joined the tables together. Join countries table with the games
@@ -98,8 +91,8 @@ GROUP BY c.country;
 /* 3) Provide a list of athletes who won a gold medal and are shorter than 
 the average Olympic athlete.
 
-do this for summer and winter games seperately. Join athletes and the games tables, return
-athletes' names. Do a subquery to filter by height
+do this for summer and winter games seperately. Join athletes and the games tables, 
+return athletes' names. Do a subquery to filter by height
 */
  
 SELECT DISTINCT(a.name),
@@ -145,7 +138,7 @@ for 10-19 the rating should be ‘medium’
 for 20+ the rating should be ‘high’.
 
 So left join country table with summer and winter games tables using country id, use a 
-case when statement to populate the participation_level column. return country name and the
-participation level. Let's gooooo!
+case when statement to populate the participation_level column. return country name and
+the participation level. Let's gooooo!
 */
 
