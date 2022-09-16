@@ -137,8 +137,6 @@ For less than 10 the rating should be ‘low’
 for 10-19 the rating should be ‘medium’ 
 for 20+ the rating should be ‘high’.
 
-So left join country table with summer and winter games tables using country id, use a 
-case when statement to populate the participation_level column. return country name and
-the participation level. Let's gooooo!
+
 */
 
