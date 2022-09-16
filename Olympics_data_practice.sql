@@ -137,6 +137,19 @@ For less than 10 the rating should be ‘low’
 for 10-19 the rating should be ‘medium’ 
 for 20+ the rating should be ‘high’.
 
-
+split this up into participation level for summer and winter games, respectively, will continue to work on
+this problem to sum up the total events for both summer and winter games and then assign a participation level
+based on the outcome.
 */
 
+SELECT DISTINCT(c.country),
+	   CASE WHEN COUNT(DISTINCT(sg.event)) < 10 THEN 'low'
+	        WHEN COUNT(DISTINCT(sg.event)) <= 19 THEN 'medium'
+	        ELSE 'high' END AS participation_level_summer,
+	   CASE WHEN COUNT(DISTINCT(wg.event)) < 10 THEN 'low'
+	        WHEN COUNT(DISTINCT(wg.event)) <= 19 THEN 'medium'
+			ELSE 'high' END AS participation_level_winter
+
+FROM summer_games AS sg INNER JOIN winter_games AS wg ON sg.country_id = wg.country_id
+						INNER JOIN countries AS c ON sg.country_id = c.id
+GROUP BY c.country
